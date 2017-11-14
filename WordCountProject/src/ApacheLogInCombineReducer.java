@@ -27,8 +27,9 @@ public class ApacheLogInCombineReducer extends Reducer<Text, IntPair, Text, Floa
         Iterator<IntPair> valuesIt = values.iterator();
         
         while(valuesIt.hasNext()){
-            sum = sum + valuesIt.next().getFirst();
-            count += valuesIt.next().getSecond();
+        	IntPair p = valuesIt.next();
+            sum += p.getFirst();
+            count += p.getSecond();
         }
         context.write(key, new FloatWritable(sum/count));
     }   

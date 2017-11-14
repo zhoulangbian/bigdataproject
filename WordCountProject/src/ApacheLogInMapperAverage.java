@@ -15,7 +15,7 @@ public class ApacheLogInMapperAverage {
 		Job job = new Job(conf, "wordcount");
 		
 		job.setMapOutputKeyClass(Text.class);
-		job.setMapOutputValueClass(Pair.class);
+		job.setMapOutputValueClass(IntPair.class);
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(FloatWritable.class);

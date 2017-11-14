@@ -13,9 +13,12 @@ public class ApacheLogAverage {
 	public static void main(String[] args) throws Exception {
 		Configuration conf = new Configuration();
 		Job job = new Job(conf, "wordcount");
+		
+		job.setMapOutputKeyClass(Text.class);
+		job.setMapOutputValueClass(IntWritable.class);
 
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(IntWritable.class);
+		job.setOutputValueClass(FloatWritable.class);
 
 		job.setMapperClass(ApacheLogMapper.class);
 		job.setReducerClass(ApacheLogReducer.class);

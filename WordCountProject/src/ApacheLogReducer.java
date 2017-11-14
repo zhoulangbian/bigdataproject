@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.Iterator;
 
+import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -12,7 +13,7 @@ import org.apache.hadoop.mapreduce.Reducer;
  * 
  */
 
-public class ApacheLogReducer extends Reducer<Text, IntWritable, Text, IntWritable>{
+public class ApacheLogReducer extends Reducer<Text, IntWritable, Text, FloatWritable>{
 
     /**
      * Method which performs the reduce operation and sums 
@@ -31,6 +32,6 @@ public class ApacheLogReducer extends Reducer<Text, IntWritable, Text, IntWritab
             sum = sum + valuesIt.next().get();
             count ++;
         }
-        context.write(key, new IntWritable(sum/count));
+        context.write(key, new FloatWritable(sum/count));
     }   
 }
